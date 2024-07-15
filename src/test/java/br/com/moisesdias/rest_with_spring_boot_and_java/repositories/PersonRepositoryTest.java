@@ -1,8 +1,10 @@
 package br.com.moisesdias.rest_with_spring_boot_and_java.repositories;
 
+import br.com.moisesdias.rest_with_spring_boot_and_java.integrationtests.AbstractIntegrationTest;
 import br.com.moisesdias.rest_with_spring_boot_and_java.models.Person;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
@@ -11,7 +13,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-class PersonRepositoryTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class PersonRepositoryTest extends AbstractIntegrationTest {
 
     @Autowired
     private PersonRepository repository;
